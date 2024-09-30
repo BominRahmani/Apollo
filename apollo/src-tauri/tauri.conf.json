@@ -5,7 +5,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "apollo",
+    "productName": "zeha",
     "version": "0.1.0"
   },
   "tauri": {
@@ -14,18 +14,28 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "fs": {
+        "all": true,
+        "readFile": true,
+        "readDir": true,
+        "scope": ["**/*"]
+      },
+      "path": {
+        "all": true
+      },
+      "protocol": {
+        "asset": true,
+        "assetScope": ["**"]
       }
     },
-    "macOSPrivateApi": true,
     "windows": [
       {
+        "title": "zeha",
         "decorations": false,
-        "width": 600,
-        "height": 60,
-        "center": true,
-        "resizable": true,
-        "title": "apollo",
-        "transparent": true
+        "maximized": true,
+        "transparent": true,
+        "resizable": true
       }
     ],
     "security": {
@@ -34,7 +44,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.apollo.app",
+      "identifier": "com.zeha.app",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",

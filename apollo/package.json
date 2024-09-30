@@ -1,5 +1,5 @@
 {
-  "name": "apollo",
+  "name": "zeha",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -10,6 +10,6 @@
     "@tauri-apps/cli": "^1"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.6.0"
+    "swiper": "^11.1.14"
   }
 }

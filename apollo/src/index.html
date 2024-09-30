@@ -1,24 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="styles.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apollo App</title>
-    <script type="module" src="/main.js" defer></script>
-  </head>
 
-  <body>
-    <div class="container">
-      <h1>Apollo!</h1>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tauri App</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="/main.js" defer></script>
+</head>
+
+<body>
+  <div class="search-container" id="search-container">
+      <input type="text" id="search-input" placeholder="Enter search query" required>
+      <div class="search"></div>
+  </div>
+  <div id="cards-list" class="cards-list">
+  </div>
+
+      <div class="container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
+</body>
 
-      <form class="row" id="search-form">
-        <input id="search-input" />
-        <button type="submit">Search</button>
-      </form>
-
-      <p id="greet-msg"></p>
-    </div>
-  </body>
 </html>
