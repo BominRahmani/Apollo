@@ -6,7 +6,10 @@ toolchain go1.23.2
 
 require github.com/wailsapp/wails/v2 v2.9.2
 
-require github.com/gocolly/colly/v2 v2.1.0
+require (
+	github.com/gocolly/colly/v2 v2.1.0
+	github.com/reujab/wallpaper v0.0.0-20210630195606-5f9f655b3740
+)
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
@@ -19,7 +22,7 @@ require (
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
-	github.com/golang/protobuf v1.4.2 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/jchv/go-winloader v0.0.0-20210711035445-715c2860da7e // indirect
 	github.com/kennygrant/sanitize v1.2.4 // indirect
@@ -48,7 +51,9 @@ require (
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/appengine v1.6.6 // indirect
-	google.golang.org/protobuf v1.24.0 // indirect
+	google.golang.org/protobuf v1.26.0 // indirect
+	gopkg.in/ini.v1 v1.62.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
 // replace github.com/wailsapp/wails/v2 v2.9.2 => /Users/ozi/go/pkg/mod

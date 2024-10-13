@@ -2,35 +2,11 @@ import './style.css';
 import './app.css';
 
 import logo from './assets/images/logo-universal.png';
-import {Scrape} from '../wailsjs/go/main/App';
+import {Scrape, DownloadImages} from '../wailsjs/go/main/App';
 
 let searchInput = document.getElementById("search-input");
 searchInput.focus();
 
-//// Setup the greet function
-//window.greet = function () {
-//    // Get name
-//    let query = searchInput.value;
-//
-//    // Check if the input is empty
-//    if (name === "") return;
-//
-//    // Call App.Greet(name)
-//    try {
-//        Scrape(query)
-//            .then((result) => {
-//                // Update result with data back from App.Greet()
-//              console.log(result)
-//            })
-//            .catch((err) => {
-//                console.error(err);
-//            });
-//    } catch (err) {
-//        console.error(err);
-//    }
-//};
-//
-//
 
 let swiper;
 let searchInputEl;
@@ -44,13 +20,8 @@ async function search_wallpapers() {
 
   try {
     const rawResults = await Scrape(searchInputEl.value);
-    //console.log(rawResults);
-
-    //const results = JSON.parse(rawResults);
-
     await loadImages(rawResults);
 
-    //console.log("Parsed results:", results);
   } catch (error) {
     console.error("Error parsing results:", error);
   }
@@ -61,7 +32,7 @@ async function loadImages(results) {
   swiperWrapper.innerHTML = ''; 
 
   for (const wallpaper of results) {
-    console.log("This is wallpaper:" + wallpaper.Preview);
+    console.log("This is wallpaper:" + wallpaper.URL);
     const slide = document.createElement('div');
     slide.className = 'swiper-slide';
 
@@ -80,7 +51,7 @@ async function loadImages(results) {
      // Add onClick event
     slide.addEventListener('click', () => {
       console.log("GOT CLICKED");
-      handleSlideClick(wallpaper.url);
+      handleSlideClick(wallpaper.URL);
     });
 
 
@@ -107,9 +78,6 @@ function initSwiper() {
     mousewheel: {
       thresholdDelta: 30,
     },
-    pagination: {
-      el: ".swiper-pagination",
-    },
     on: {
       click(event) {
         swiper.slideTo(this.clickedIndex);
@@ -119,9 +87,10 @@ function initSwiper() {
 }
 
 
-async function handleSlideClick(fileUrl) {
- await invoke("choose_wallpaper", { url : fileUrl});
+async function handleSlideClick(image_url) {
+  await DownloadImages(image_url);
 }
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const searchContainer = document.getElementById('search-container');
@@ -140,18 +109,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
-        showSearch();
+        event.preventDefault(); // Prevent default behavior (including the beep)
+        toggleSearch();
       }
     });
 
     function hideSearch() {
       searchContainer.classList.add('hidden');
-
     }
 
     function showSearch() {
       searchContainer.classList.remove('hidden');
       searchInput.focus(); // Optional: focus on the input when shown
+    }
+
+    function toggleSearch() {
+      if (searchContainer.classList.contains('hidden')) {
+        showSearch();
+      } else {
+        hideSearch();
+      }
     }
 
     initSwiper();
